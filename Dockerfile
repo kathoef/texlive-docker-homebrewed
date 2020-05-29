@@ -5,7 +5,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get install --yes --no-install-recommends \
     # Required for Pygments>=2.6
     python-is-python3 python3-pip \
-    # Required for manual TeXLive installation
+    # Required for manual TeX Live installation
     wget cpanminus \
     # Required for correctly setting PDF build datetimes
     tzdata \
@@ -29,7 +29,7 @@ ENV PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH
 
 RUN tlmgr install texliveonfly latexmk
 
-COPY example.tex references.bib ./
+COPY example.tex references.bib latexmkrc ./
 RUN texliveonfly --compiler=latexmk --arguments='-shell-escape -pdf -bibtex' example.tex && latexmk -C
 
 # Timezone stuff.
