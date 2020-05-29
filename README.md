@@ -1,4 +1,4 @@
-# texlive-docker-tailored
+# texlive-docker-homebrewed
 
 ```
 docker image build . -t texlive-tailored
